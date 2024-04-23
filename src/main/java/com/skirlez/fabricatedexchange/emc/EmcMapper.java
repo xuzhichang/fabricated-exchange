@@ -16,7 +16,7 @@ import com.skirlez.fabricatedexchange.FabricatedExchange;
 import com.skirlez.fabricatedexchange.mixin.BrewingRecipeAccessor;
 import com.skirlez.fabricatedexchange.mixin.BrewingRecipeRegistryAccessor;
 import com.skirlez.fabricatedexchange.mixin.IngredientAccessor;
-import com.skirlez.fabricatedexchange.mixin.LegacySmithingRecipeAccessor;
+import com.skirlez.fabricatedexchange.mixin.SmithingRecipeAccessor;
 import com.skirlez.fabricatedexchange.mixin.TagEntryAccessor;
 import com.skirlez.fabricatedexchange.util.GeneralUtil;
 import com.skirlez.fabricatedexchange.util.SuperNumber;
@@ -34,7 +34,7 @@ import net.minecraft.potion.Potions;
 import net.minecraft.recipe.BrewingRecipeRegistry;
 import net.minecraft.recipe.CraftingRecipe;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.LegacySmithingRecipe;
+import net.minecraft.recipe.SmithingRecipe;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeManager;
 import net.minecraft.recipe.RecipeType;
@@ -233,9 +233,9 @@ public class EmcMapper {
 
     @Nullable
     private ItemEquation createSmithingEquation(SmithingRecipe recipe) {
-    	if (!(recipe instanceof LegacySmithingRecipe))
+    	if (!(recipe instanceof SmithingRecipe))
     		return null;
-        LegacySmithingRecipeAccessor recipeAccessor = (LegacySmithingRecipeAccessor) recipe;
+        SmithingRecipeAccessor recipeAccessor = (SmithingRecipeAccessor) recipe;
         return new ItemEquation(
             Arrays.asList(recipeAccessor.getBase(), recipeAccessor.getAddition()),
             Arrays.asList(recipe.getOutput(this.dynamicRegistryManager)),
